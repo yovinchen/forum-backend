@@ -1,12 +1,5 @@
 package com.yovinchen.forum.config;
 
-/**
- * ClassName: config
- * Package: com.yovinchen.forum.config
- *
- * @author yovinchen
- * @Create 2023/6/14 16:51
- */
 
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +13,13 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * ClassName: config
+ * Package: com.yovinchen.forum.config
+ *
+ * @author yovinchen
+ * @Create 2023/6/14 16:51
+ */
 @Configuration
 @EnableSwagger2
 @EnableKnife4j

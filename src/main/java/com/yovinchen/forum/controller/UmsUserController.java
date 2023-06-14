@@ -22,6 +22,7 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Api(tags = "用户管理接口")
 @RestController
@@ -75,7 +76,13 @@ public class UmsUserController extends BaseController {
         Map<String, Object> map = new HashMap<>(16);
         UmsUser user = iUmsUserService.getUserByUsername(username);
         Assert.notNull(user, "用户不存在");
-        Page<BmsPost> page = iBmsPostService.page(new Page<>(pageNo, size), new LambdaQueryWrapper<BmsPost>().eq(BmsPost::getUserId, user.getId()));
+        Page<BmsPost> page;
+        if (Objects.equals(user.getUsername(), "admin")) {
+            page = iBmsPostService.page(new Page<>(pageNo, size), null);
+        } else {
+            page = iBmsPostService.page(new Page<>(pageNo, size), new LambdaQueryWrapper<BmsPost>().eq(BmsPost::getUserId, user.getId()));
+
+        }
         map.put("user", user);
         map.put("topics", page);
         return ApiResult.success(map);

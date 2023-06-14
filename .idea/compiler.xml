@@ -7,7 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="forum" />
+        <module name="forum-backend" />
         <module name="doubao_community_backend-master" />
       </profile>
     </annotationProcessing>
@@ -19,7 +19,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="doubao" options="-parameters" />
       <module name="doubao_community_backend-master" options="-parameters" />
-      <module name="forum" options="-parameters" />
+      <module name="forum-backend" options="-parameters" />
     </option>
   </component>
 </project>
