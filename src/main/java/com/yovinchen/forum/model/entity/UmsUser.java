@@ -44,7 +44,7 @@ public class UmsUser implements Serializable {
     @ApiModelProperty("头像url")
     @Builder.Default
     @TableField("avatar")
-    private String avatar = "https://s3.ax1x.com/2020/12/01/DfHNo4.jpg";
+    private String avatar = "https://api.multiavatar.com/1.png";
 
     @ApiModelProperty("邮箱")
     @TableField("email")

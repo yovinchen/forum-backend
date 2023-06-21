@@ -9,8 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class IBmsTipServiceImpl extends ServiceImpl<BmsTipMapper
-        , BmsTip> implements IBmsTipService {
+public class IBmsTipServiceImpl extends ServiceImpl<BmsTipMapper, BmsTip> implements IBmsTipService {
 
     @Override
     public BmsTip getRandomTip() {

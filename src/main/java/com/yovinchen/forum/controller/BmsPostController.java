@@ -22,7 +22,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-@Api(tags = "帖子管理接口")
+@Api(tags = "文章管理接口")
 @RestController
 @RequestMapping("/post")
 public class BmsPostController extends BaseController {
@@ -32,7 +32,7 @@ public class BmsPostController extends BaseController {
     @Resource
     private IUmsUserService umsUserService;
 
-    @ApiOperation(value = "获取帖子列表", notes = "根据标签类型获取帖子列表")
+    @ApiOperation(value = "获取文章列表", notes = "根据标签类型获取文章列表")
     @GetMapping("/list")
     public ApiResult<Page<PostVO>> list(@ApiParam(name = "tab", value = "标签类型", defaultValue = "latest") @RequestParam(value = "tab", defaultValue = "latest") String tab, @ApiParam(name = "pageNo", value = "页码", defaultValue = "1") @RequestParam(value = "pageNo", defaultValue = "1") Integer pageNo, @ApiParam(name = "pageSize", value = "每页显示数量", defaultValue = "10") @RequestParam(value = "size", defaultValue = "10") Integer pageSize) {
         Page<PostVO> list = iBmsPostService.getList(new Page<>(pageNo, pageSize), tab);
@@ -40,32 +40,32 @@ public class BmsPostController extends BaseController {
     }
 
 
-    @ApiOperation(value = "创建帖子", notes = "通过传入参数来创建一个新的帖子")
+    @ApiOperation(value = "创建文章", notes = "通过传入参数来创建一个新的文章")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ApiResult<BmsPost> create(@RequestHeader(value = JwtUtil.USER_NAME) String userName, @ApiParam(name = "dto", value = "帖子内容", required = true) @RequestBody CreateTopicDTO dto) {
+    public ApiResult<BmsPost> create(@RequestHeader(value = JwtUtil.USER_NAME) String userName, @ApiParam(name = "dto", value = "文章内容", required = true) @RequestBody CreateTopicDTO dto) {
         UmsUser user = umsUserService.getUserByUsername(userName);
         BmsPost topic = iBmsPostService.create(dto, user);
         return ApiResult.success(topic);
     }
 
 
-    @ApiOperation(value = "查看帖子详情", notes = "通过ID查看帖子详情")
+    @ApiOperation(value = "查看文章详情", notes = "通过ID查看文章详情")
     @GetMapping()
-    public ApiResult<Map<String, Object>> view(@ApiParam(name = "id", value = "帖子ID", required = true) @RequestParam("id") String id) {
+    public ApiResult<Map<String, Object>> view(@ApiParam(name = "id", value = "文章ID", required = true) @RequestParam("id") String id) {
         Map<String, Object> map = iBmsPostService.viewTopic(id);
         return ApiResult.success(map);
     }
 
 
-    @ApiOperation(value = "获取帖子推荐列表", notes = "通过当前帖子 ID 获取相关的推荐帖子列表")
+    @ApiOperation(value = "获取文章推荐列表", notes = "通过当前文章 ID 获取相关的推荐文章列表")
     @GetMapping("/recommend")
-    public ApiResult<List<BmsPost>> getRecommend(@ApiParam(name = "id", value = "当前帖子ID", required = true) @RequestParam("topicId") String id) {
+    public ApiResult<List<BmsPost>> getRecommend(@ApiParam(name = "id", value = "当前文章ID", required = true) @RequestParam("topicId") String id) {
         List<BmsPost> topics = iBmsPostService.getRecommend(id);
         return ApiResult.success(topics);
     }
 
 
-    @ApiOperation(value = "更新帖子信息", notes = "用户可以通过该接口修改自己的帖子信息")
+    @ApiOperation(value = "更新文章信息", notes = "用户可以通过该接口修改自己的文章信息")
     @PostMapping("/update")
     public ApiResult<BmsPost> update(@ApiParam(name = "userName", value = "用户名", required = true) @RequestHeader(value = JwtUtil.USER_NAME) String userName, @Valid @RequestBody BmsPost post) {
         UmsUser umsUser = umsUserService.getUserByUsername(userName);
@@ -77,9 +77,9 @@ public class BmsPostController extends BaseController {
     }
 
 
-    @ApiOperation(value = "删除帖子", notes = "用户可以通过该接口删除自己的帖子")
+    @ApiOperation(value = "删除文章", notes = "用户可以通过该接口删除自己的文章")
     @DeleteMapping("/delete/{id}")
-    public ApiResult<String> delete(@ApiParam(name = "userName", value = "用户名", required = true) @RequestHeader(value = JwtUtil.USER_NAME) String userName, @ApiParam(name = "id", value = "帖子ID", required = true) @PathVariable("id") String id) {
+    public ApiResult<String> delete(@ApiParam(name = "userName", value = "用户名", required = true) @RequestHeader(value = JwtUtil.USER_NAME) String userName, @ApiParam(name = "id", value = "文章ID", required = true) @PathVariable("id") String id) {
         UmsUser umsUser = umsUserService.getUserByUsername(userName);
         BmsPost byId = iBmsPostService.getById(id);
         Assert.notNull(byId, "来晚一步，话题已不存在");

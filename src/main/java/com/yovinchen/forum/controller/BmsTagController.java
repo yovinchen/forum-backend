@@ -22,7 +22,7 @@ public class BmsTagController extends BaseController {
     @Resource
     private IBmsTagService bmsTagService;
 
-    @ApiOperation(value = "根据标签名获取帖子列表", notes = "通过标签名获取帖子列表")
+    @ApiOperation(value = "根据标签名获取文章列表", notes = "通过标签名获取文章列表")
     @ApiImplicitParams({@ApiImplicitParam(name = "name", value = "标签名", required = true, dataType = "String", paramType = "path"), @ApiImplicitParam(name = "page", value = "页码", defaultValue = "1", dataType = "Integer", paramType = "query"), @ApiImplicitParam(name = "size", value = "每页大小", defaultValue = "10", dataType = "Integer", paramType = "query")})
     @GetMapping("/{name}")
     public ApiResult<Map<String, Object>> getTopicsByTag(@ApiParam(name = "name", value = "标签名", required = true) @PathVariable("name") String tagName, @ApiParam(name = "page", value = "页码", defaultValue = "1") @RequestParam(value = "page", defaultValue = "1") Integer page, @ApiParam(name = "size", value = "每页大小", defaultValue = "10") @RequestParam(value = "size", defaultValue = "10") Integer size) {

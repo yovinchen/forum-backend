@@ -15,7 +15,7 @@ import java.util.Date;
 
 @Data
 @Builder
-@ApiModel("帖子评论")
+@ApiModel("文章评论")
 @TableName("bms_comment")
 @AllArgsConstructor
 @NoArgsConstructor

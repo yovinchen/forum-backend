@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Data
 @ApiModel("小贴士")
 @NoArgsConstructor
-@TableName("bms_tip")
+@TableName("bms_ti45p")
 public class BmsTip implements Serializable {
 
     private static final long serialVersionUID = 1L;

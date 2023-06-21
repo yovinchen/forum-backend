@@ -15,7 +15,7 @@ import java.util.Date;
 
 @Data
 @Builder
-@ApiModel("帖子")
+@ApiModel("文章")
 @TableName("bms_post")
 @AllArgsConstructor
 @NoArgsConstructor

@@ -70,7 +70,7 @@ public class UmsUserController extends BaseController {
         return ApiResult.success(null, "注销成功");
     }
 
-    @ApiOperation(value = "根据用户名获取该用户发布的帖子列表", notes = "通过用户名获取帖子列表")
+    @ApiOperation(value = "根据用户名获取该用户发布的文章列表", notes = "通过用户名获取文章列表")
     @GetMapping("/{username}")
     public ApiResult<Map<String, Object>> getUserByName(@ApiParam(name = "username", value = "用户名", required = true) @PathVariable("username") String username, @ApiParam(name = "pageNo", value = "页码", defaultValue = "1") @RequestParam(value = "pageNo", defaultValue = "1") Integer pageNo, @ApiParam(name = "size", value = "每页大小", defaultValue = "10") @RequestParam(value = "size", defaultValue = "10") Integer size) {
         Map<String, Object> map = new HashMap<>(16);

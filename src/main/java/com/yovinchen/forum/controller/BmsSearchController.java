@@ -23,7 +23,7 @@ public class BmsSearchController extends BaseController {
     private IBmsPostService postService;
 
     @GetMapping
-    @ApiOperation(value = "根据关键字搜索帖子列表", notes = "根据指定关键字，分页查询帖子列表")
+    @ApiOperation(value = "根据关键字搜索文章列表", notes = "根据指定关键字，分页查询文章列表")
     public ApiResult<Page<PostVO>> searchList(@ApiParam(name = "keyword", value = "搜索关键字", required = true) @RequestParam("keyword") String keyword, @ApiParam(name = "pageNum", value = "页码", defaultValue = "1") @RequestParam("pageNum") Integer pageNum, @ApiParam(name = "pageSize", value = "每页显示条数", defaultValue = "10") @RequestParam("pageSize") Integer pageSize) {
         Page<PostVO> results = postService.searchByKey(keyword, new Page<>(pageNum, pageSize));
         return ApiResult.success(results);

@@ -18,7 +18,6 @@ public class BmsTipController extends BaseController {
 
     @Resource
     private IBmsTipService bmsTipService;
-
     /**
      * 获取一条随机的每日一言
      *
